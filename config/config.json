@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "sena",
+    "password": "febrisena123",
+    "database": "database_dumbmerch",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "sena",
+    "password": "febrisena123",
+    "database": "database_dumbmerch",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "sena",
+    "password": "febrisena123",
+    "database": "database_dumbmerch",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
