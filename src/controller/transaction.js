@@ -2,7 +2,11 @@ const { transaction, product, user } = require("../../models");
 
 exports.AddTransaction = async (req, res) => {
   try {
-    const transactionCreate = await transaction.create(req.body);
+    const transactionCreate = await transaction.create({
+      ...req.body,
+      idBuyer: req.user.id,
+      status: "pending",
+    });
     return res.status(201).json({
       status: "succes",
       data: {

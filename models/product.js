@@ -15,6 +15,16 @@ module.exports = (sequelize, DataTypes) => {
           name: "idUser",
         },
       });
+
+      product.belongsToMany(models.user, {
+        as: "user",
+        // through is required in this association
+        through: {
+          model: "cart", // this is "bridge" table
+          as: "bridge",
+        },
+        foreignKey: "idProduct",
+      });
     }
   }
   product.init(

@@ -9,18 +9,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      user.hasMany(models.product, {
-        as: "products",
-        foreignKey: {
-          name: "idUser",
-        },
-      });
 
       user.hasOne(models.profile, {
         as: "profiles",
         foreignKey: {
           name: "idUser",
         },
+      });
+
+      user.belongsToMany(models.product, {
+        as: "productsCart",
+        // through is required in this association
+        through: {
+          model: "cart", // this is "bridge" table
+          as: "bridge",
+        },
+        foreignKey: "idUser",
       });
     }
   }
