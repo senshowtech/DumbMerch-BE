@@ -49,3 +49,30 @@ exports.getCart = async (req, res) => {
     });
   }
 };
+
+exports.deleteCart = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const findCartsProduct = await cart.findOne({
+      where: {
+        idProduct: id,
+      },
+      attributes: ["id"],
+    });
+    if (findCartsProduct.id != null) {
+      await cart.destroy({
+        where: {
+          id: findCartsProduct.id,
+        },
+      });
+    }
+    return res.status(201).json({
+      status: "success",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      status: "error",
+    });
+  }
+};
