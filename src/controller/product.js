@@ -4,8 +4,8 @@ const fs = require("fs");
 exports.getAllProduct = async (req, res) => {
   try {
     let products = await product.findAndCountAll({
-      offset: req.params.page * 4,
-      limit: 4,
+      offset: req.params.page * 8,
+      limit: 8,
       include: [
         {
           model: user,
