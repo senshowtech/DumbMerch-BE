@@ -29,7 +29,7 @@ exports.AddTransaction = async (req, res) => {
 
 exports.getAllTransaction = async (req, res) => {
   try {
-    const transactions = await transaction.findAll({
+    const dataTransaction = await transaction.findAll({
       include: [
         {
           model: product,
@@ -63,6 +63,18 @@ exports.getAllTransaction = async (req, res) => {
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
+    });
+    let transactions = [];
+    dataTransaction.forEach((value) => {
+      let data = {
+        id: value.id,
+        product: value.product,
+        buyer: value.buyer,
+        seller: value.seller,
+        price: value.price,
+        status: value.status,
+      };
+      transactions.push(data);
     });
     return res.status(201).json({
       status: "succes",
