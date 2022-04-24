@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       product.belongsToMany(models.user, {
-        as: "user",
+        as: "cartUser",
         // through is required in this association
         through: {
           model: "cart", // this is "bridge" table

@@ -9,11 +9,11 @@ const routesUsers = require("./src/routes/user");
 const routesCategory = require("./src/routes/category");
 const routesTransaction = require("./src/routes/transaction");
 const routesProfile = require("./src/routes/profile");
+const routesCart = require("./src/routes/cart");
 const routesOngkir = require("./src/routes/ongkir");
 
 app.use("/uploads", express.static("uploads"));
 app.use(cors());
-// app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/", routesOngkir);
@@ -24,7 +24,8 @@ app.use(
   routesUsers,
   routesCategory,
   routesTransaction,
-  routesProfile
+  routesProfile,
+  routesCart
 );
 
 app.listen(port, () => {
