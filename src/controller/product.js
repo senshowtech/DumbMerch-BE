@@ -84,14 +84,16 @@ exports.addProducts = async (req, res) => {
     });
     return res.status(201).json({
       status: "success",
-      id: productCreate.id,
-      title: productCreate.title,
-      image: productCreate.image,
-      desc: productCreate.desc,
-      price: productCreate.price,
-      image: process.env.url + req.file.filename,
-      qty: productCreate.qty,
-      users,
+      data: {
+        id: productCreate.id,
+        title: productCreate.title,
+        image: productCreate.image,
+        desc: productCreate.desc,
+        price: productCreate.price,
+        image: process.env.url + req.file.filename,
+        qty: productCreate.qty,
+        users,
+      },
     });
   } catch (error) {
     console.log(error);

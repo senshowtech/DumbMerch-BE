@@ -52,8 +52,11 @@ exports.addCategory = async (req, res) => {
   try {
     const categoryCreate = await category.create(req.body);
     return res.status(201).json({
-      id: categoryCreate.id,
-      name: categoryCreate.name,
+      status: "success",
+      data: {
+        id: categoryCreate.id,
+        name: categoryCreate.name,
+      },
     });
   } catch (error) {
     console.log(error);

@@ -10,12 +10,14 @@ exports.AddTransaction = async (req, res) => {
     return res.status(201).json({
       status: "succes",
       data: {
-        id: transactionCreate.id,
-        idProduct: transactionCreate.idProduct,
-        idBuyer: req.user.id,
-        idSeller: transactionCreate.idSeller,
-        price: transactionCreate.price,
-        status: "pending",
+        transaction: {
+          id: transactionCreate.id,
+          idProduct: transactionCreate.idProduct,
+          idBuyer: req.user.id,
+          idSeller: transactionCreate.idSeller,
+          price: transactionCreate.price,
+          status: "pending",
+        },
       },
     });
   } catch (error) {
