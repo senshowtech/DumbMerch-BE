@@ -11,7 +11,7 @@ const {
 } = require("../controller/product");
 
 router.post("/product", auth, uploadFile("image"), addProducts);
-router.get("/products", getAllProduct);
+router.get("/products/:page", getAllProduct);
 router.get("/product/:id", auth, getDetailProduct);
 router.patch("/product/:id", uploadFile("image"), auth, editProducts);
 router.delete("/product/:id", auth, deleteProduct);

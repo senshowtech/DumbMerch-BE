@@ -3,7 +3,9 @@ const fs = require("fs");
 
 exports.getAllProduct = async (req, res) => {
   try {
-    let products = await product.findAll({
+    let products = await product.findAndCountAll({
+      offset: req.params.page * 4,
+      limit: 4,
       include: [
         {
           model: user,
