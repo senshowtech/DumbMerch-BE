@@ -2,15 +2,15 @@ const multer = require("multer");
 
 exports.uploadFile = (imageFile) => {
   const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: (req, file, cb) => {
       cb(null, "uploads");
     },
-    filename: function (req, file, cb) {
+    filename: (req, file, cb) => {
       cb(null, Date.now() + "-" + file.originalname.replace(/\s/g, ""));
     },
   });
 
-  const fileFilter = function (req, file, cb) {
+  const fileFilter = (req, file, cb) => {
     if (file.fieldname === imageFile) {
       if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
         req.fileValidationError = {
