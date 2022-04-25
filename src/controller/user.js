@@ -25,9 +25,8 @@ exports.Register = async (req, res) => {
         errors = "password minimal 6 karakter";
       }
       return res.status(400).json({
-        error: {
-          message: errors,
-        },
+        status: "failed",
+        message: errors,
       });
     }
 
@@ -99,9 +98,8 @@ exports.Login = async (req, res) => {
         errors = "password minimal 6 karakter";
       }
       return res.status(400).json({
-        error: {
-          message: errors,
-        },
+        status: "failed",
+        message: errors,
       });
     }
 
