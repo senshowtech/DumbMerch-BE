@@ -137,6 +137,7 @@ exports.editProducts = async (req, res) => {
       {
         ...req.body,
         image: process.env.url + req.file.filename,
+        kurir: JSON.parse(req.body.kurir),
         idUser: req.user.id,
       },
       {
