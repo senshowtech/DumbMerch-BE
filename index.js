@@ -16,8 +16,6 @@ app.use("/uploads", express.static("uploads"));
 app.use(cors());
 app.use(express.json());
 
-app.use("/", routesOngkir);
-
 app.use(
   "/api/v1/",
   routesProduct,
@@ -25,7 +23,8 @@ app.use(
   routesCategory,
   routesTransaction,
   routesProfile,
-  routesCart
+  routesCart,
+  routesOngkir
 );
 
 app.listen(port, () => {

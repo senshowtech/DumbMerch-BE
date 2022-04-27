@@ -73,6 +73,7 @@ exports.addProducts = async (req, res) => {
   try {
     let productCreate = await product.create({
       ...req.body,
+      kurir: JSON.parse(req.body.kurir),
       image: process.env.url + req.file.filename,
       idUser: req.user.id,
     });
