@@ -4,7 +4,7 @@ const fs = require("fs");
 exports.getAllProduct = async (req, res) => {
   try {
     let products = await product.findAndCountAll({
-      offset: req.params.page * 8,
+      offset: (req.params.page - 1) * 8,
       limit: 8,
       include: [
         {
@@ -22,7 +22,11 @@ exports.getAllProduct = async (req, res) => {
     return res.status(201).json({
       status: "succes",
       data: {
-        products,
+        products: products.rows,
+        total_data: products.count,
+        total_page: Math.ceil(products.count / 8),
+        current_page: parseInt(req.params.page),
+        last_page: Math.ceil(products.count / 8),
       },
     });
   } catch (error) {
