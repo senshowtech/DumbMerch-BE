@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       phone: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       address: {
         type: Sequelize.STRING,

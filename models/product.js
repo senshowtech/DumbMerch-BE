@@ -16,6 +16,15 @@ module.exports = (sequelize, DataTypes) => {
         },
       });
 
+      product.belongsToMany(models.category, {
+        as: "categories",
+        through: {
+          model: "productCategories",
+          as: "bridge",
+        },
+        foreignKey: "idProduct",
+      });
+
       product.belongsToMany(models.user, {
         as: "cartUser",
         // through is required in this association
