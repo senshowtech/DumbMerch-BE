@@ -99,6 +99,13 @@ exports.getDetailProduct = async (req, res) => {
 
 exports.addProducts = async (req, res) => {
   try {
+    if (req.body.category === "[]") {
+      return res.status(400).send({
+        status: "failed",
+        message: "Category harus di isi",
+      });
+    }
+
     let productCreate = await product.create({
       ...req.body,
       kurir: JSON.parse(req.body.kurir),
@@ -107,6 +114,7 @@ exports.addProducts = async (req, res) => {
     });
 
     let data_category = JSON.parse(req.body.category);
+
     let productCategoryData = data_category.map((item) => {
       return { idProduct: productCreate.id, idCategory: parseInt(item) };
     });
@@ -120,6 +128,7 @@ exports.addProducts = async (req, res) => {
         exclude: ["createdAt", "updatedAt", "idUser"],
       },
     });
+
     return res.status(201).json({
       status: "success",
       data: {
@@ -209,6 +218,7 @@ exports.editProducts = async (req, res) => {
         },
       }
     );
+
     return res.status(201).json({
       status: "succes",
       data: {
@@ -245,17 +255,20 @@ exports.deleteProduct = async (req, res) => {
         ],
       },
     });
+
     let replaceImage = productImage.image.replace(process.env.url, "");
     fs.unlink(`./uploads/${replaceImage}`, (error) => {
       if (error) {
         throw error;
       }
     });
+
     await product.destroy({
       where: {
         id: id,
       },
     });
+
     return res.status(201).json({
       status: "succes",
       data: {

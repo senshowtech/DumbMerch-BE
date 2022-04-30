@@ -13,7 +13,7 @@ const {
 router.post("/product", auth, uploadFile("image"), addProducts);
 router.get("/products/:page", getAllProduct);
 router.get("/product/:id", auth, getDetailProduct);
-router.patch("/product/:id", uploadFile("image"), auth, editProducts);
+router.patch("/product/:id", auth, uploadFile("image"), editProducts);
 router.delete("/product/:id", auth, deleteProduct);
 
 module.exports = router;
