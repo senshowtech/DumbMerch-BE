@@ -20,7 +20,7 @@ exports.addProfile = async (req, res) => {
 
 exports.editProfile = async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.user.id;
     await profile.update(
       {
         ...req.body,

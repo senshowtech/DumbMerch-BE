@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   profile.init(
     {
-      phone: DataTypes.INTEGER,
+      phone: DataTypes.BIGINT,
       address: DataTypes.STRING,
-      city: DataTypes.INTEGER,
+      city: DataTypes.STRING,
       image: DataTypes.STRING,
       idUser: DataTypes.INTEGER,
     },

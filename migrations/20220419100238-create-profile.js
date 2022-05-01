@@ -9,13 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       phone: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
       },
       address: {
         type: Sequelize.STRING,
       },
       city: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       image: {
         type: Sequelize.STRING,
