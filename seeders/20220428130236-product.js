@@ -18,7 +18,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
@@ -49,7 +49,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
@@ -80,7 +80,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
@@ -111,7 +111,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
@@ -142,7 +142,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
@@ -173,7 +173,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
@@ -204,7 +204,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
@@ -235,7 +235,7 @@ module.exports = {
           title: "products",
           desc: "desc",
           image:
-            "http://localhost:5000/uploads/1651151393901-Screenshotfrom2022-04-2815-58-41.png",
+            "http://localhost:5000/uploads/1651464427679-Screenshotfrom2022-05-0208-43-41.png",
           price: 100,
           qty: 100,
           kurir: JSON.stringify([
