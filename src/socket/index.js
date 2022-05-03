@@ -47,18 +47,17 @@ const socketIo = (io) => {
             },
           ],
           attributes: {
-            exclude: ["createdAt", "updatedAt"],
+            exclude: ["createdAt", "updatedAt", "password"],
           },
         });
 
-        custommerContacts = JSON.parse(JSON.stringify(custommerContacts));
+        // custommerContacts = JSON.parse(JSON.stringify(custommerContacts));
 
-        custommerContacts = custommerContacts.map((item) => {
-          return {
-            ...item,
-            image: item.image ? process.env.url + item.image : null,
-          };
-        });
+        // custommerContacts = custommerContacts.map((item) => {
+        //   return {
+        //     ...item,
+        //   };
+        // });
 
         socket.emit("custommer contacts", custommerContacts);
       } catch (err) {
