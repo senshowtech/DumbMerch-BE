@@ -147,6 +147,7 @@ const socketIo = (io) => {
         const tokenKey = process.env.Token;
         const verified = jwt.verify(token, tokenKey);
 
+        // Ambil id sender dari token
         const idSender = verified.id;
         const { message, idRecipient } = payload;
 
