@@ -137,6 +137,7 @@ exports.Login = async (req, res) => {
       status: "success",
       data: {
         user: {
+          id: usersCheck.id,
           name: usersCheck.name,
           email: usersCheck.email,
           status: usersCheck.status,
@@ -180,6 +181,48 @@ exports.getUser = async (req, res) => {
     return res.status(500).json({
       status: "error",
       error: "server error",
+    });
+  }
+};
+
+exports.checkAuth = async (req, res) => {
+  try {
+    const id = req.user.id;
+
+    const dataUser = await user.findOne({
+      where: {
+        id,
+      },
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "password"],
+      },
+    });
+
+    if (!dataUser) {
+      return res.status(404).send({
+        status: "failed",
+      });
+    }
+
+    const token = jwt.sign({ id: dataUser.id }, process.env.Token);
+
+    res.status(201).json({
+      status: "success",
+      data: {
+        user: {
+          id: dataUser.id,
+          name: dataUser.name,
+          email: dataUser.email,
+          status: dataUser.status,
+          token: token,
+        },
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: "failed",
+      message: "Server Error",
     });
   }
 };
