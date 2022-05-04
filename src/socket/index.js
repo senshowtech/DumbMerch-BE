@@ -16,8 +16,6 @@ const socketIo = (io) => {
     console.log("client connect:", socket.id);
     const userId = socket.handshake.query.id;
     connectedUser[userId] = socket.id;
-    // console.log(connectedUser[userId]);
-    // console.log(userId);
 
     socket.on("load admin contact", async () => {
       try {
