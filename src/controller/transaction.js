@@ -42,6 +42,7 @@ exports.getAllTransaction = async (req, res) => {
         exclude: ["createdAt", "updatedAt"],
       },
     });
+
     let transactions = [];
     if (dataTransaction !== null) {
       dataTransaction.forEach((value) => {
@@ -56,6 +57,7 @@ exports.getAllTransaction = async (req, res) => {
         transactions.push(data);
       });
     }
+
     return res.status(201).json({
       status: "succes",
       data: {
@@ -110,13 +112,11 @@ exports.AddTransaction = async (req, res) => {
         secure: true,
       },
       customer_details: {
-        full_name: buyerData?.name,
+        first_name: buyerData?.name,
         email: buyerData?.email,
-        phone: buyerData?.profile?.phone,
+        phone: "0" + buyerData?.profiles.phone,
       },
     };
-
-    console.log(parameter);
 
     const payment = await snap.createTransaction(parameter);
 
@@ -168,6 +168,7 @@ exports.notification = async (req, res) => {
     const fraudStatus = statusResponse.fraud_status;
 
     console.log(statusResponse);
+    console.log(transactionStatus);
 
     if (transactionStatus == "capture") {
       if (fraudStatus == "challenge") {
