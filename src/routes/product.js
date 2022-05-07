@@ -9,6 +9,7 @@ const {
   getDetailProduct,
   editProducts,
   deleteProduct,
+  editStock,
 } = require("../controller/product");
 
 router.post("/product", auth, uploadFile("image"), addProducts);
@@ -16,6 +17,7 @@ router.get("/products/:page", getAllProductPagination);
 router.get("/products/", getAllProduct);
 router.get("/product/:id", auth, getDetailProduct);
 router.patch("/product/:id", auth, uploadFile("image"), editProducts);
+router.patch("/stock/:id", auth, editStock);
 router.delete("/product/:id", auth, deleteProduct);
 
 module.exports = router;

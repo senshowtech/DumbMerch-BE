@@ -326,3 +326,31 @@ exports.deleteProduct = async (req, res) => {
     });
   }
 };
+
+exports.editStock = async (req, res) => {
+  try {
+    const id = req.params.id;
+    let products = await product.update(
+      {
+        ...req.body,
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+    return res.status(201).json({
+      status: "succes",
+      data: {
+        products,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      status: "failed",
+      error: "server error",
+    });
+  }
+};
