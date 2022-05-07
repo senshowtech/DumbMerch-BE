@@ -4,6 +4,7 @@ const { auth } = require("../middlewares/auth");
 const { uploadFile } = require("../middlewares/uploadFile");
 const {
   addProducts,
+  getAllProductPagination,
   getAllProduct,
   getDetailProduct,
   editProducts,
@@ -11,7 +12,8 @@ const {
 } = require("../controller/product");
 
 router.post("/product", auth, uploadFile("image"), addProducts);
-router.get("/products/:page", getAllProduct);
+router.get("/products/:page", getAllProductPagination);
+router.get("/products/", getAllProduct);
 router.get("/product/:id", auth, getDetailProduct);
 router.patch("/product/:id", auth, uploadFile("image"), editProducts);
 router.delete("/product/:id", auth, deleteProduct);

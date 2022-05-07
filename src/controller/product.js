@@ -1,7 +1,7 @@
 const { product, user, productCategories, category } = require("../../models");
 const fs = require("fs");
 
-exports.getAllProduct = async (req, res) => {
+exports.getAllProductPagination = async (req, res) => {
   try {
     let products = await product.findAndCountAll({
       offset: (req.params.page - 1) * 8,
@@ -39,6 +39,49 @@ exports.getAllProduct = async (req, res) => {
         total_page: Math.ceil(products.count / 8),
         current_page: parseInt(req.params.page),
         last_page: Math.ceil(products.count / 8),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      status: "error",
+      error: "server error",
+    });
+  }
+};
+
+exports.getAllProduct = async (req, res) => {
+  try {
+    let products = await product.findAll({
+      include: [
+        {
+          model: user,
+          as: "users",
+          attributes: {
+            exclude: ["createdAt", "updatedAt", "password"],
+          },
+        },
+        {
+          model: category,
+          as: "categories",
+          through: {
+            model: productCategories,
+            as: "bridge",
+            attributes: [],
+          },
+          attributes: {
+            exclude: ["createdAt", "updatedAt"],
+          },
+        },
+      ],
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "idUser"],
+      },
+    });
+    return res.status(201).json({
+      status: "succes",
+      data: {
+        products: products,
       },
     });
   } catch (error) {
