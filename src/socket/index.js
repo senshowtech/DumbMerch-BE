@@ -155,6 +155,9 @@ const socketIo = (io) => {
           idSender,
         });
 
+        console.log("socket id " + socket.id);
+        console.log("connect user " + connectedUser[idRecipient]);
+
         io.to(socket.id)
           .to(connectedUser[idRecipient])
           .emit("new message", idRecipient);
