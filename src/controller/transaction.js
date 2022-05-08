@@ -39,7 +39,7 @@ exports.getAllTransaction = async (req, res) => {
         },
       ],
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["updatedAt"],
       },
     });
 
@@ -53,6 +53,7 @@ exports.getAllTransaction = async (req, res) => {
           seller: value.seller,
           price: value.price,
           status: value.status,
+          date: value.createdAt,
         };
         transactions.push(data);
       });
