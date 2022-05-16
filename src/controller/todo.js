@@ -2,7 +2,9 @@ const { todo } = require("../../models");
 
 exports.getTodo = async (req, res) => {
   try {
-    let todoapp = await todo.findAll();
+    let todoapp = await todo.findAll({
+      order: [["id", "DESC"]],
+    });
     return res.status(201).json({
       status: "succes",
       data: {
