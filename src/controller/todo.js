@@ -2,7 +2,11 @@ const { todo } = require("../../models");
 
 exports.getTodo = async (req, res) => {
   try {
+    const uuid = req.params.uuid;
     let todoapp = await todo.findAll({
+      where: {
+        uuid,
+      },
       order: [["id", "DESC"]],
     });
     return res.status(201).json({
