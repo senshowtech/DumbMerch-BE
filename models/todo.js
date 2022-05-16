@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   todo.init({
-    task: DataTypes.STRING
+    task: DataTypes.STRING,
+    uuid: DataTypes.STRING,
+    doing: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'todo',
