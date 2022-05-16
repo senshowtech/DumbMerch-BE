@@ -13,6 +13,7 @@ const routesTransaction = require("./src/routes/transaction");
 const routesProfile = require("./src/routes/profile");
 const routesCart = require("./src/routes/cart");
 const routesOngkir = require("./src/routes/ongkir");
+const routeTodo = require("./src/routes/todo");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use(
   routesTransaction,
   routesProfile,
   routesCart,
+  routeTodo,
   routesOngkir
 );
 
