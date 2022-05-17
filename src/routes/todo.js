@@ -11,6 +11,7 @@ const {
 
 router.post("/todo", addTodo);
 router.get("/todos/:uuid", getTodo);
+router.get("/todos/pagination/:uuid/:page", getTodo);
 router.get("/todo/:id", getDetailTodo);
 router.patch("/todo/:id", editTodo);
 router.delete("/todo/:id", deleteTodo);
