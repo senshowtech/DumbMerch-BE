@@ -10,7 +10,7 @@ const {
 } = require("../controller/todo");
 
 router.post("/todo", addTodo);
-router.get("/todos/:uuid/:page", getTodo);
+router.get("/todos/:uuid", getTodo);
 router.get("/todo/:id", getDetailTodo);
 router.patch("/todo/:id", editTodo);
 router.delete("/todo/:id", deleteTodo);
