@@ -2,6 +2,7 @@ const { todo } = require("../../models");
 
 exports.getAllTodoPagination = async (req, res) => {
   try {
+    const uuid = req.params.uuid;
     let todos = await todo.findAndCountAll({
       offset: (req.params.page - 1) * 8,
       limit: 8,
