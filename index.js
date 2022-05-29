@@ -20,7 +20,10 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["https://www.diafragma.xyz", "https://diafragma.xyz"], // we must define cors because our client and server have diffe
+    origin: [
+      "https://www.dumbmerch.febrisena.xyz",
+      "https://dumbmerch.febrisena.xyz",
+    ], // we must define cors because our client and server have diffe
   },
 });
 
