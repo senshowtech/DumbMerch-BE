@@ -187,7 +187,6 @@ exports.addProducts = async (req, res) => {
         image: result.url,
         desc: productCreate.desc,
         price: productCreate.price,
-        image: process.env.url + req.file.filename,
         qty: productCreate.qty,
         users,
       },
