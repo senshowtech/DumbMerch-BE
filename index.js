@@ -26,7 +26,7 @@ const io = new Server(server, {
 
 require("./src/socket")(io);
 
-const port = process.env.Port;
+const port = process.env.PORT || process.env.Port;
 
 app.use(express.json());
 app.use(cors());
