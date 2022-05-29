@@ -1,5 +1,5 @@
 const { profile } = require("../../models");
-const fs = require("fs");
+const cloudinary = require("../utils/cloudinary");
 
 exports.addProfile = async (req, res) => {
   try {
@@ -21,10 +21,15 @@ exports.addProfile = async (req, res) => {
 exports.editProfile = async (req, res) => {
   try {
     const id = req.user.id;
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "dumbmerch",
+      use_filename: true,
+      unique_filename: false,
+    });
     await profile.update(
       {
         ...req.body,
-        image: process.env.url + req.file.filename,
+        image: result.url,
       },
       {
         where: {

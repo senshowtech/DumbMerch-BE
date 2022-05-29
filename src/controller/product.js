@@ -1,5 +1,6 @@
 const { product, user, productCategories, category } = require("../../models");
 const fs = require("fs");
+const cloudinary = require("../utils/cloudinary");
 
 exports.getAllProductPagination = async (req, res) => {
   try {
@@ -149,10 +150,16 @@ exports.addProducts = async (req, res) => {
       });
     }
 
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "dumbmerch",
+      use_filename: true,
+      unique_filename: false,
+    });
+
     let productCreate = await product.create({
       ...req.body,
       kurir: JSON.parse(req.body.kurir),
-      image: process.env.url + req.file.filename,
+      image: result.url,
       idUser: req.user.id,
     });
 
@@ -177,7 +184,7 @@ exports.addProducts = async (req, res) => {
       data: {
         id: productCreate.id,
         title: productCreate.title,
-        image: productCreate.image,
+        image: result.url,
         desc: productCreate.desc,
         price: productCreate.price,
         image: process.env.url + req.file.filename,
@@ -241,17 +248,24 @@ exports.editProducts = async (req, res) => {
     });
     await productCategories.bulkCreate(productCategoryData);
 
-    let replaceImage = products.image.replace(process.env.url, "");
-    fs.unlink(`./uploads/${replaceImage}`, (error) => {
-      if (error) {
-        throw error;
-      }
+    let ekstensi = products.image
+      .split("/")[8]
+      .match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/);
+
+    cloudinary.uploader.destroy(
+      `dumbmerch/${products.image.split("/")[8].replace(ekstensi[0], "")}`
+    );
+
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "dumbmerch",
+      use_filename: true,
+      unique_filename: false,
     });
 
     await product.update(
       {
         ...req.body,
-        image: process.env.url + req.file.filename,
+        image: result.url,
         kurir: JSON.parse(req.body.kurir),
         idUser: req.user.id,
       },
@@ -299,12 +313,13 @@ exports.deleteProduct = async (req, res) => {
       },
     });
 
-    let replaceImage = productImage.image.replace(process.env.url, "");
-    fs.unlink(`./uploads/${replaceImage}`, (error) => {
-      if (error) {
-        throw error;
-      }
-    });
+    let ekstensi = productImage.image
+      .split("/")[8]
+      .match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/);
+
+    cloudinary.uploader.destroy(
+      `dumbmerch/${productImage.image.split("/")[8].replace(ekstensi[0], "")}`
+    );
 
     await product.destroy({
       where: {
