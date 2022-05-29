@@ -15,10 +15,14 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "sena",
-    "password": "febrisena123",
-    "database": "database_dumbmerch",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "protocol": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
