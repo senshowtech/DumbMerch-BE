@@ -1,5 +1,4 @@
 const { product, user, productCategories, category } = require("../../models");
-const fs = require("fs");
 const cloudinary = require("../utils/cloudinary");
 
 exports.getAllProductPagination = async (req, res) => {
